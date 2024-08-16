@@ -23,10 +23,11 @@ const Hero = () => {
         </div> */}
         <div className="absolute top-20 right-40 transform rotate-12 -z-10 blur-lg opacity-25 lg:block lg:blur-none lg:opacity-100">
           <Image
-            src={"/images/cart-min.webp"}
+            src={"/images/cart-min.webp" || null}
             alt="Hero image"
             width={400}
             height={400}
+            priority
           />
         </div>
         <div className="flex gap-4">
