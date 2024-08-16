@@ -6,16 +6,16 @@ import { Heading, Label, Text, Tooltip } from "@medusajs/ui"
 import React, { useMemo } from "react"
 import { useFormState } from "react-dom"
 
-import Input from "@modules/common/components/input"
-import Trash from "@modules/common/icons/trash"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { formatAmount } from "@lib/util/prices"
 import {
   removeDiscount,
   removeGiftCard,
   submitDiscountForm,
 } from "@modules/checkout/actions"
-import { formatAmount } from "@lib/util/prices"
+import ErrorMessage from "@modules/checkout/components/error-message"
+import { SubmitButton } from "@modules/checkout/components/submit-button"
+import Input from "@modules/common/components/input"
+import Trash from "@modules/common/icons/trash"
 
 type DiscountCodeProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
@@ -60,7 +60,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       <div className="txt-medium">
         {gift_cards.length > 0 && (
           <div className="flex flex-col mb-4">
-            <Heading className="txt-medium">Gift card(s) applied:</Heading>
+            <Heading className="txt-medium">Cupon(es) aplicados:</Heading>
             {gift_cards?.map((gc) => (
               <div
                 className="flex items-center justify-between txt-small-plus"
@@ -82,7 +82,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   onClick={() => removeGiftCardCode(gc.code)}
                 >
                   <Trash size={14} />
-                  <span className="sr-only">Remove gift card from order</span>
+                  <span className="sr-only">
+                    Quitar cupón de descuento de la orden
+                  </span>
                 </button>
               </div>
             ))}
@@ -92,7 +94,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
         {appliedDiscount ? (
           <div className="w-full flex items-center">
             <div className="flex flex-col w-full">
-              <Heading className="txt-medium">Discount applied:</Heading>
+              <Heading className="txt-medium">Descuento aplicado:</Heading>
               <div className="flex items-center justify-between w-full max-w-full">
                 <Text className="flex gap-x-1 items-baseline txt-small-plus w-4/5 pr-1">
                   <span>Code:</span>
@@ -105,7 +107,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 >
                   <Trash size={14} />
                   <span className="sr-only">
-                    Remove discount code from order
+                    Remover código de descuento de la orden
                   </span>
                 </button>
               </div>
@@ -119,9 +121,12 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 type="button"
                 className="txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
               >
-                Add gift card or discount code
+                Añadir código de descuento
               </button>
-              <Tooltip content="You can add multiple gift cards, but only one discount code.">
+              <Tooltip
+                content="
+                Si tienes un código de descuento, ingrésalo aquí para aplicarlo a tu orden."
+              >
                 <InformationCircleSolid color="var(--fg-muted)" />
               </Tooltip>
             </Label>
@@ -129,12 +134,12 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
               <>
                 <div className="flex w-full gap-x-2 items-center">
                   <Input
-                    label="Please enter code"
+                    label="Código de descuento"
                     name="code"
                     type="text"
                     autoFocus={false}
                   />
-                  <SubmitButton variant="secondary">Apply</SubmitButton>
+                  <SubmitButton variant="secondary">Aplicar</SubmitButton>
                 </div>
                 <ErrorMessage error={message} />
               </>

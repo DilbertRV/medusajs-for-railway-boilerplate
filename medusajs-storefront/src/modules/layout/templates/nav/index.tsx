@@ -1,4 +1,3 @@
-import { headers } from "next/headers"
 import { Suspense } from "react"
 
 import { listRegions } from "@lib/data"
@@ -24,7 +23,11 @@ export default async function Nav() {
               href="/"
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
             >
-              Medusa Store
+              <img
+                className="aspect-[2/1] w-12 md: w-24"
+                src="https://res.cloudinary.com/dalt8ewne/image/upload/v1723800551/y94oz0xawzutrtndsxgm.png"
+                alt="Logo de Mega Fruta"
+              />
             </LocalizedClientLink>
           </div>
 
@@ -52,7 +55,7 @@ export default async function Nav() {
                   className="hover:text-ui-fg-base flex gap-2"
                   href="/cart"
                 >
-                  Cart (0)
+                  Carrito (0)
                 </LocalizedClientLink>
               }
             >

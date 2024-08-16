@@ -2,9 +2,7 @@
 
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
-import Back from "@modules/common/icons/back"
 import FastDelivery from "@modules/common/icons/fast-delivery"
-import Refresh from "@modules/common/icons/refresh"
 
 import Accordion from "./accordion"
 
@@ -15,11 +13,11 @@ type ProductTabsProps = {
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
     {
-      label: "Product Information",
+      label: "Información del producto",
       component: <ProductInfoTab product={product} />,
     },
     {
-      label: "Shipping & Returns",
+      label: "Envío",
       component: <ShippingInfoTab />,
     },
   ]
@@ -46,8 +44,8 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
   return (
     <div className="text-small-regular py-8">
       <div className="grid grid-cols-2 gap-x-8">
-        <div className="flex flex-col gap-y-4">
-          <div>
+        {/* <div className="flex flex-col gap-y-4">
+          {/* <div>
             <span className="font-semibold">Material</span>
             <p>{product.material ? product.material : "-"}</p>
           </div>
@@ -58,21 +56,21 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
           <div>
             <span className="font-semibold">Type</span>
             <p>{product.type ? product.type.value : "-"}</p>
-          </div>
-        </div>
+          </div> 
+        </div> */}
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Weight</span>
+            <span className="font-semibold">Peso</span>
             <p>{product.weight ? `${product.weight} g` : "-"}</p>
           </div>
-          <div>
+          {/* <div>
             <span className="font-semibold">Dimensions</span>
             <p>
               {product.length && product.width && product.height
                 ? `${product.length}L x ${product.width}W x ${product.height}H`
                 : "-"}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       {product.tags?.length ? (
@@ -91,24 +89,25 @@ const ShippingInfoTab = () => {
         <div className="flex items-start gap-x-2">
           <FastDelivery />
           <div>
-            <span className="font-semibold">Fast delivery</span>
+            <span className="font-semibold">Envío rápido y seguro</span>
             <p className="max-w-sm">
-              Your package will arrive in 3-5 business days at your pick up
-              location or in the comfort of your home.
+              Envío inmediado en toda la zona de Liberia. Realiza el pago por
+              SINPE MÓVIL y recibe tu pedido en la puerta de tu casa.
             </p>
           </div>
         </div>
-        <div className="flex items-start gap-x-2">
+        {/* <div className="flex items-start gap-x-2">
           <Refresh />
           <div>
-            <span className="font-semibold">Simple exchanges</span>
+            <span className="font-semibold">
+              Cambios fáciles
+            </span>
             <p className="max-w-sm">
-              Is the fit not quite right? No worries - we&apos;ll exchange your
-              product for a new one.
+              
             </p>
           </div>
-        </div>
-        <div className="flex items-start gap-x-2">
+        </div> */}
+        {/* <div className="flex items-start gap-x-2">
           <Back />
           <div>
             <span className="font-semibold">Easy returns</span>
@@ -118,7 +117,7 @@ const ShippingInfoTab = () => {
               is hassle-free.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

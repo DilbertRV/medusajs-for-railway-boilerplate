@@ -22,7 +22,7 @@ const ShowAll = () => {
   return (
     <Container className="flex sm:flex-col small:flex-row gap-2 justify-center items-center h-fit py-4 small:py-2">
       <Text>Showing the first {width > 640 ? 6 : 3} results.</Text>
-      <InteractiveLink href={`/results/${query}`}>View all</InteractiveLink>
+      <InteractiveLink href={`/results/${query}`}>Ver todos</InteractiveLink>
     </Container>
   )
 }

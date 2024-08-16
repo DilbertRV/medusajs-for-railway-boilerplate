@@ -3,17 +3,17 @@
 import { LineItem, Region } from "@medusajs/medusa"
 import { Table, Text, clx } from "@medusajs/ui"
 
+import { updateLineItem } from "@modules/cart/actions"
 import CartItemSelect from "@modules/cart/components/cart-item-select"
+import ErrorMessage from "@modules/checkout/components/error-message"
 import DeleteButton from "@modules/common/components/delete-button"
 import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
-import Thumbnail from "@modules/products/components/thumbnail"
-import { updateLineItem } from "@modules/cart/actions"
-import Spinner from "@modules/common/icons/spinner"
-import { useState } from "react"
-import ErrorMessage from "@modules/checkout/components/error-message"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Spinner from "@modules/common/icons/spinner"
+import Thumbnail from "@modules/products/components/thumbnail"
+import { useState } from "react"
 
 type ItemProps = {
   item: Omit<LineItem, "beforeInsert">
@@ -47,27 +47,35 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
 
   return (
     <Table.Row className="w-full">
-      <Table.Cell className="!pl-0 p-4 w-24">
+      <Table.Cell className="flex flex-col h-auto !pl-0 p-4 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
-          className={clx("flex", {
+          className={clx("relative", {
             "w-16": type === "preview",
             "small:w-24 w-12": type === "full",
           })}
         >
+          <DeleteButton
+            className="absolute -left-4 -top-2 z-10 bg-white p-1.5 rounded-full shadow-md"
+            id={item.id}
+          />
+
           <Thumbnail thumbnail={item.thumbnail} size="square" />
+          <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
+          <LineItemOptions variant={item.variant} />
         </LocalizedClientLink>
       </Table.Cell>
 
       <Table.Cell className="text-left">
-        <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
-        <LineItemOptions variant={item.variant} />
+        {/* <Text className="txt-medium-plus text-ui-fg-base line-clamp-1">
+          {item.title}
+        </Text>
+        <LineItemOptions variant={item.variant} /> */}
       </Table.Cell>
 
       {type === "full" && (
         <Table.Cell>
           <div className="flex gap-2 items-center w-28">
-            <DeleteButton id={item.id} />
             <CartItemSelect
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}

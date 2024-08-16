@@ -1,18 +1,18 @@
 "use client"
 
 import { RadioGroup } from "@headlessui/react"
+import { formatAmount } from "@lib/util/prices"
 import { CheckCircleSolid } from "@medusajs/icons"
 import { Cart } from "@medusajs/medusa"
 import { PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
-import { Button, Heading, Text, clx, useToggleState } from "@medusajs/ui"
-import { formatAmount } from "@lib/util/prices"
+import { Button, Heading, Text, clx } from "@medusajs/ui"
 
+import { setShippingMethod } from "@modules/checkout/actions"
+import ErrorMessage from "@modules/checkout/components/error-message"
 import Divider from "@modules/common/components/divider"
 import Radio from "@modules/common/components/radio"
 import Spinner from "@modules/common/icons/spinner"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { setShippingMethod } from "@modules/checkout/actions"
-import { useRouter, useSearchParams, usePathname } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 type ShippingProps = {
@@ -24,6 +24,8 @@ const Shipping: React.FC<ShippingProps> = ({
   cart,
   availableShippingMethods,
 }) => {
+  console.log(cart?.shipping_address, cart?.billing_address, cart?.email)
+
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -76,7 +78,7 @@ const Shipping: React.FC<ShippingProps> = ({
             }
           )}
         >
-          Delivery
+          Envío
           {!isOpen && cart.shipping_methods.length > 0 && <CheckCircleSolid />}
         </Heading>
         {!isOpen &&
@@ -88,7 +90,7 @@ const Shipping: React.FC<ShippingProps> = ({
                 onClick={handleEdit}
                 className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
               >
-                Edit
+                Editar
               </button>
             </Text>
           )}
@@ -151,7 +153,7 @@ const Shipping: React.FC<ShippingProps> = ({
             isLoading={isLoading}
             disabled={!cart.shipping_methods[0]}
           >
-            Continue to payment
+            Continuar con el pago
           </Button>
         </div>
       ) : (
@@ -160,7 +162,7 @@ const Shipping: React.FC<ShippingProps> = ({
             {cart && cart.shipping_methods.length > 0 && (
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                  Method
+                  Método de envío
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle">
                   {cart.shipping_methods[0].shipping_option.name} (

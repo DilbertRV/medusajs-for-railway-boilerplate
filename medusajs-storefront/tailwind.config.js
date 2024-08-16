@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        cart: "url('/cart-min.webp')",
+      },
       transitionProperty: {
         width: "width margin",
         height: "height",

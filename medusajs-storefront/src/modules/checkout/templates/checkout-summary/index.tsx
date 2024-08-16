@@ -1,11 +1,11 @@
 import { Heading } from "@medusajs/ui"
 
+import { getCart } from "@lib/data"
 import ItemsPreviewTemplate from "@modules/cart/templates/preview"
 import DiscountCode from "@modules/checkout/components/discount-code"
 import CartTotals from "@modules/common/components/cart-totals"
 import Divider from "@modules/common/components/divider"
 import { cookies } from "next/headers"
-import { getCart } from "@lib/data"
 
 const CheckoutSummary = async () => {
   const cartId = cookies().get("_medusa_cart_id")?.value
@@ -28,7 +28,7 @@ const CheckoutSummary = async () => {
           level="h2"
           className="flex flex-row text-3xl-regular items-baseline"
         >
-          In your Cart
+          En tu carrito
         </Heading>
         <Divider className="my-6" />
         <CartTotals data={cart} />

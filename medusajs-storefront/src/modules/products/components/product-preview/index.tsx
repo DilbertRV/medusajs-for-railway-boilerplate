@@ -40,7 +40,7 @@ export default async function ProductPreview({
       <div>
         <Thumbnail
           thumbnail={productPreview.thumbnail}
-          size="full"
+          size="small"
           isFeatured={isFeatured}
         />
         <div className="flex txt-compact-medium mt-4 justify-between">

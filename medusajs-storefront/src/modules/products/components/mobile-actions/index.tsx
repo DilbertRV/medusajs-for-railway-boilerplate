@@ -103,7 +103,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   <span>
                     {variant
                       ? Object.values(options).join(" / ")
-                      : "Select Options"}
+                      : "Seleccione una opción"}
                   </span>
                   <ChevronDown />
                 </div>
@@ -115,10 +115,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 isLoading={isAdding}
               >
                 {!variant
-                  ? "Select variant"
+                  ? "Seleccione una opción"
                   : !inStock
-                  ? "Out of stock"
-                  : "Add to cart"}
+                  ? "No disponible"
+                  : "Añadir al carrito"}
               </Button>
             </div>
           </div>
@@ -159,7 +159,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                     </button>
                   </div>
                   <div className="bg-white px-6 py-12">
-                    {product.variants.length > 1 && (
+                    {product.variants.length >= 1 && (
                       <div className="flex flex-col gap-y-6">
                         {(product.options || []).map((option) => {
                           return (

@@ -7,8 +7,8 @@ import Help from "@modules/order/components/help"
 import Items from "@modules/order/components/items"
 import OnboardingCta from "@modules/order/components/onboarding-cta"
 import OrderDetails from "@modules/order/components/order-details"
-import ShippingDetails from "@modules/order/components/shipping-details"
 import PaymentDetails from "@modules/order/components/payment-details"
+import ShippingDetails from "@modules/order/components/shipping-details"
 
 type OrderCompletedTemplateProps = {
   order: Order
@@ -28,12 +28,12 @@ export default function OrderCompletedTemplate({
             level="h1"
             className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
           >
-            <span>Thank you!</span>
-            <span>Your order was placed successfully.</span>
+            <span>¡Muchas gracias! 🍉</span>
+            <span>Tu pedido ha sido confirmado</span>
           </Heading>
           <OrderDetails order={order} />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Summary
+            Detalles del pedido
           </Heading>
           <Items items={order.items} region={order.region} />
           <CartTotals data={order} />
