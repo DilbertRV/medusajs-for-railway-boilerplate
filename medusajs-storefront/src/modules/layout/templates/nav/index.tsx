@@ -4,6 +4,7 @@ import { listRegions } from "@lib/data"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
+import Image from "next/image"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
@@ -23,8 +24,10 @@ export default async function Nav() {
               href="/"
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
             >
-              <img
-                className="aspect-[2/1] w-12 md: w-24"
+              <Image
+                className="aspect-[2/1] w-12 md:w-24"
+                width={96}
+                height={48}
                 src="https://res.cloudinary.com/dalt8ewne/image/upload/v1723800551/y94oz0xawzutrtndsxgm.png"
                 alt="Logo de Mega Fruta"
               />
@@ -33,7 +36,7 @@ export default async function Nav() {
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
-              {process.env.FEATURE_SEARCH_ENABLED && (
+              {/* {process.env.FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
                   className="hover:text-ui-fg-base"
                   href="/search"
@@ -41,12 +44,12 @@ export default async function Nav() {
                 >
                   Search
                 </LocalizedClientLink>
-              )}
+              )} */}
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"
               >
-                Account
+                Cuenta
               </LocalizedClientLink>
             </div>
             <Suspense

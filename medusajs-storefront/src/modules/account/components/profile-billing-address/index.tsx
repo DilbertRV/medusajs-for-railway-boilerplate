@@ -62,15 +62,15 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
           {customer.billing_address.first_name}{" "}
           {customer.billing_address.last_name}
         </span>
-        <span>{customer.billing_address.company}</span>
+        {/* <span>{customer.billing_address.company}</span>
         <span>
           {customer.billing_address.address_1}
           {customer.billing_address.address_2
             ? `, ${customer.billing_address.address_2}`
             : ""}
-        </span>
+        </span> */}
         <span>
-          {customer.billing_address.postal_code},{" "}
+          {/* {customer.billing_address.postal_code},{" "} */}
           {customer.billing_address.city}
         </span>
         <span>{country}</span>
@@ -127,7 +127,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
             /> */}
             <Input
               disabled
-              label="City"
+              label="Ciudad"
               name="billing_address.city"
               defaultValue={customer.billing_address?.city || undefined}
               required
@@ -135,7 +135,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
           </div>
           <Input
             disabled
-            label="Province"
+            label="Provincia"
             name="billing_address.province"
             defaultValue={customer.billing_address?.province || undefined}
           />
@@ -164,13 +164,13 @@ const mapBillingAddressToFormData = ({ customer }: MyInformationProps) => {
     billing_address: {
       first_name: customer.billing_address?.first_name || undefined,
       last_name: customer.billing_address?.last_name || undefined,
-      company: customer.billing_address?.company || undefined,
+      // company: customer.billing_address?.company || undefined,
       address_1: customer.billing_address?.address_1 || undefined,
-      address_2: customer.billing_address?.address_2 || undefined,
+      // address_2: customer.billing_address?.address_2 || undefined,
       city: customer.billing_address?.city || undefined,
       province: customer.billing_address?.province || undefined,
-      postal_code: customer.billing_address?.postal_code || undefined,
-      country_code: customer.billing_address?.country_code || undefined,
+      // postal_code: customer.billing_address?.postal_code || undefined,
+      // country_code: customer.billing_address?.country_code || undefined,
     },
   }
 }

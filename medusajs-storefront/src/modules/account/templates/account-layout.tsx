@@ -1,9 +1,8 @@
 import React from "react"
 
-import UnderlineLink from "@modules/common/components/interactive-link"
-
-import AccountNav from "../components/account-nav"
 import { Customer } from "@medusajs/medusa"
+import Link from "next/link"
+import AccountNav from "../components/account-nav"
 
 interface AccountLayoutProps {
   customer: Omit<Customer, "password_hash"> | null
@@ -23,17 +22,33 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
         </div>
         <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8">
           <div>
-            <h3 className="text-xl-semi mb-4">Got questions?</h3>
+            <h3 className="text-xl-semi mb-4">¿Tienes preguntas?</h3>
             <span className="txt-medium">
-              You can find frequently asked questions and answers on our
-              customer service page.
+              Contáctanos en:{" "}
+              <Link
+                className="underline text-ui-fg-interactive"
+                href="mailto:megafruta20@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                megafruta20@gmail.com
+              </Link>{" "}
+              o escríbenos por WhatsApp al{" "}
+              <Link
+                className="underline text-ui-fg-interactive"
+                href="https://wa.me/+50685187761"
+                target="_blank"
+                rel="noreferrer"
+              >
+                8518-7761
+              </Link>
             </span>
           </div>
-          <div>
+          {/* <div>
             <UnderlineLink href="/customer-service">
-              Customer Service
+              Servicio al cliente
             </UnderlineLink>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

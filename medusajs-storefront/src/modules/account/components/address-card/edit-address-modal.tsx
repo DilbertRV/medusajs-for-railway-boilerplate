@@ -1,21 +1,20 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
 import { PencilSquare as Edit, Trash } from "@medusajs/icons"
-import { Button, Heading, Text, clx } from "@medusajs/ui"
 import { Address, Region } from "@medusajs/medusa"
+import { Button, Heading, Text, clx } from "@medusajs/ui"
+import React, { useEffect, useState } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
-import CountrySelect from "@modules/checkout/components/country-select"
-import Input from "@modules/common/components/input"
-import Modal from "@modules/common/components/modal"
 import {
   deleteCustomerShippingAddress,
   updateCustomerShippingAddress,
 } from "@modules/account/actions"
+import { SubmitButton } from "@modules/checkout/components/submit-button"
+import Input from "@modules/common/components/input"
+import Modal from "@modules/common/components/modal"
 import Spinner from "@modules/common/icons/spinner"
 import { useFormState } from "react-dom"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
 
 type EditAddressProps = {
   region: Region
@@ -101,47 +100,47 @@ const EditAddress: React.FC<EditAddressProps> = ({
             onClick={open}
           >
             <Edit />
-            Edit
+            Editar
           </button>
           <button
             className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
             onClick={removeAddress}
           >
             {removing ? <Spinner /> : <Trash />}
-            Remove
+            Quitar
           </button>
         </div>
       </div>
 
       <Modal isOpen={state} close={close}>
         <Modal.Title>
-          <Heading className="mb-2">Edit address</Heading>
+          <Heading className="mb-2">Editar dirección</Heading>
         </Modal.Title>
         <form action={formAction}>
           <Modal.Body>
             <div className="grid grid-cols-1 gap-y-2">
               <div className="grid grid-cols-2 gap-x-2">
                 <Input
-                  label="First name"
+                  label="Nombre"
                   name="first_name"
                   required
                   autoComplete="given-name"
                   defaultValue={address.first_name || undefined}
                 />
                 <Input
-                  label="Last name"
+                  label="Apellidos"
                   name="last_name"
                   required
                   autoComplete="family-name"
                   defaultValue={address.last_name || undefined}
                 />
               </div>
-              <Input
+              {/* <Input
                 label="Company"
                 name="company"
                 autoComplete="organization"
                 defaultValue={address.company || undefined}
-              />
+              /> */}
               <Input
                 label="Address"
                 name="address_1"
@@ -149,21 +148,22 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 autoComplete="address-line1"
                 defaultValue={address.address_1 || undefined}
               />
-              <Input
+              {/* <Input
                 label="Apartment, suite, etc."
                 name="address_2"
                 autoComplete="address-line2"
                 defaultValue={address.address_2 || undefined}
-              />
+              /> */}
               <div className="grid grid-cols-[144px_1fr] gap-x-2">
-                <Input
+                {/* <Input
                   label="Postal code"
                   name="postal_code"
                   required
                   autoComplete="postal-code"
                   defaultValue={address.postal_code || undefined}
-                />
+                /> */}
                 <Input
+                  disabled
                   label="City"
                   name="city"
                   required
@@ -172,18 +172,19 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 />
               </div>
               <Input
+                disabled
                 label="Province / State"
                 name="province"
                 autoComplete="address-level1"
                 defaultValue={address.province || undefined}
               />
-              <CountrySelect
+              {/* <CountrySelect
                 name="country_code"
                 region={region}
                 required
                 autoComplete="country"
                 defaultValue={address.country_code || undefined}
-              />
+              /> */}
               <Input
                 label="Phone"
                 name="phone"
@@ -205,9 +206,9 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 onClick={close}
                 className="h-10"
               >
-                Cancel
+                Cancelar
               </Button>
-              <SubmitButton>Save</SubmitButton>
+              <SubmitButton>Guardar</SubmitButton>
             </div>
           </Modal.Footer>
         </form>

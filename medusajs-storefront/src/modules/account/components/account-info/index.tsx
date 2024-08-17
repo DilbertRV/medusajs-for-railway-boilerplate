@@ -59,7 +59,7 @@ const AccountInfo = ({
             onClick={handleToggle}
             type={state ? "reset" : "button"}
           >
-            {state ? "Cancel" : "Edit"}
+            {state ? "Cancelar" : "Editar"}
           </Button>
         </div>
       </div>
@@ -119,7 +119,7 @@ const AccountInfo = ({
                 className="w-full small:max-w-[140px]"
                 type="submit"
               >
-                Save changes
+                Guardar cambios
               </Button>
             </div>
           </div>

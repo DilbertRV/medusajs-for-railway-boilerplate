@@ -1,10 +1,10 @@
 "use client"
 
 import { Order } from "@medusajs/medusa"
-import { Button } from "@medusajs/ui"
+import { Button, clx } from "@medusajs/ui"
 
-import OrderCard from "../order-card"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import OrderCard from "../order-card"
 
 const OrderOverview = ({ orders }: { orders: Order[] }) => {
   if (orders?.length) {
@@ -24,13 +24,20 @@ const OrderOverview = ({ orders }: { orders: Order[] }) => {
 
   return (
     <div className="w-full flex flex-col items-center gap-y-4">
-      <h2 className="text-large-semi">Nothing to see here</h2>
+      <h2 className="text-large-semi">No hay nada que mostrar</h2>
       <p className="text-base-regular">
-        You don&apos;t have any orders yet, let us change that {":)"}
+        Aún no has realizado ningún pedido. ¿Qué tal si echas un vistazo a
+        nuestros productos?
       </p>
       <div className="mt-4">
         <LocalizedClientLink href="/" passHref>
-          <Button>Continue shopping</Button>
+          <Button
+            size="large"
+            variant="primary"
+            className={clx("bg-red-500 hover:bg-red-500/80 shadow-md")}
+          >
+            Continuar comprando
+          </Button>
         </LocalizedClientLink>
       </div>
     </div>

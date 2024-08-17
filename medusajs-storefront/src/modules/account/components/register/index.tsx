@@ -2,11 +2,11 @@
 
 import { useFormState } from "react-dom"
 
-import Input from "@modules/common/components/input"
-import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import { signUp } from "@modules/account/actions"
+import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
+import Input from "@modules/common/components/input"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type Props = {
@@ -19,36 +19,36 @@ const Register = ({ setCurrentView }: Props) => {
   return (
     <div className="max-w-sm flex flex-col items-center">
       <h1 className="text-large-semi uppercase mb-6">
-        Become a Medusa Store Member
+        Conviértete en miembro de Mega Fruta 🍉
       </h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Medusa Store Member profile, and get access to an enhanced
-        shopping experience.
+        Regístrate para tener acceso a tus pedidos, direcciones y más. No te
+        preocupes, aún puedes seguir comprando sin una cuenta.
       </p>
       <form className="w-full flex flex-col" action={formAction}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
-            label="First name"
+            label="Nombre"
             name="first_name"
             required
             autoComplete="given-name"
           />
           <Input
-            label="Last name"
+            label="Apellido"
             name="last_name"
             required
             autoComplete="family-name"
           />
           <Input
-            label="Email"
+            label="Correo"
             name="email"
             required
             type="email"
             autoComplete="email"
           />
-          <Input label="Phone" name="phone" type="tel" autoComplete="tel" />
+          <Input label="Teléfono" name="phone" type="tel" autoComplete="tel" />
           <Input
-            label="Password"
+            label="Contraseña"
             name="password"
             required
             type="password"
@@ -57,31 +57,31 @@ const Register = ({ setCurrentView }: Props) => {
         </div>
         <ErrorMessage error={message} />
         <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Medusa Store&apos;s{" "}
+          Al unirte a Mega Fruta, aceptas nuestros{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
             className="underline"
           >
-            Privacy Policy
+            Política de Privacidad
           </LocalizedClientLink>{" "}
-          and{" "}
+          y{" "}
           <LocalizedClientLink
             href="/content/terms-of-use"
             className="underline"
           >
-            Terms of Use
+            Términos de Uso
           </LocalizedClientLink>
           .
         </span>
-        <SubmitButton className="w-full mt-6">Join</SubmitButton>
+        <SubmitButton className="w-full mt-6">Unirse</SubmitButton>
       </form>
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Already a member?{" "}
+        ¿Ya eres miembro?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Sign in
+          Inicia sesión
         </button>
         .
       </span>

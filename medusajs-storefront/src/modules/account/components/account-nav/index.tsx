@@ -1,16 +1,16 @@
 "use client"
 
+import { ArrowRightOnRectangle } from "@medusajs/icons"
 import { Customer } from "@medusajs/medusa"
 import { clx } from "@medusajs/ui"
-import { ArrowRightOnRectangle } from "@medusajs/icons"
 import { useParams, usePathname } from "next/navigation"
 
-import ChevronDown from "@modules/common/icons/chevron-down"
 import { signOut } from "@modules/account/actions"
-import User from "@modules/common/icons/user"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import ChevronDown from "@modules/common/icons/chevron-down"
 import MapPin from "@modules/common/icons/map-pin"
 import Package from "@modules/common/icons/package"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import User from "@modules/common/icons/user"
 
 const AccountNav = ({
   customer,
@@ -34,13 +34,13 @@ const AccountNav = ({
           >
             <>
               <ChevronDown className="transform rotate-90" />
-              <span>Account</span>
+              <span>Cuenta</span>
             </>
           </LocalizedClientLink>
         ) : (
           <>
             <div className="text-xl-semi mb-4 px-8">
-              Hello {customer?.first_name}
+              Hola {customer?.first_name}
             </div>
             <div className="text-base-regular">
               <ul>
@@ -52,7 +52,7 @@ const AccountNav = ({
                     <>
                       <div className="flex items-center gap-x-2">
                         <User size={20} />
-                        <span>Profile</span>
+                        <span>Perfil</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
@@ -66,7 +66,7 @@ const AccountNav = ({
                     <>
                       <div className="flex items-center gap-x-2">
                         <MapPin size={20} />
-                        <span>Addresses</span>
+                        <span>Dirección</span>
                       </div>
                       <ChevronDown className="transform -rotate-90" />
                     </>
@@ -79,7 +79,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <Package size={20} />
-                      <span>Orders</span>
+                      <span>Tus ordenes</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
@@ -92,7 +92,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <ArrowRightOnRectangle />
-                      <span>Log out</span>
+                      <span>Salir</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </button>
@@ -105,33 +105,33 @@ const AccountNav = ({
       <div className="hidden small:block">
         <div>
           <div className="pb-4">
-            <h3 className="text-base-semi">Account</h3>
+            <h3 className="text-base-semi">Cuenta</h3>
           </div>
           <div className="text-base-regular">
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
               <li>
                 <AccountNavLink href="/account" route={route!}>
-                  Overview
+                  Resumen
                 </AccountNavLink>
               </li>
               <li>
                 <AccountNavLink href="/account/profile" route={route!}>
-                  Profile
+                  Perfil
                 </AccountNavLink>
               </li>
               <li>
                 <AccountNavLink href="/account/addresses" route={route!}>
-                  Addresses
+                  Direcciones
                 </AccountNavLink>
               </li>
               <li>
                 <AccountNavLink href="/account/orders" route={route!}>
-                  Orders
+                  Ordenes
                 </AccountNavLink>
               </li>
               <li className="text-grey-700">
                 <button type="button" onClick={handleLogout}>
-                  Log out
+                  Salir
                 </button>
               </li>
             </ul>

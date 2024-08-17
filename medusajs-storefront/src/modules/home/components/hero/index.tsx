@@ -10,7 +10,7 @@ const Hero = () => {
         <Heading level="h1" className="text-3xl">
           Frutas y verduras frescas a tu puerta en minutos
         </Heading>
-        <Heading level="h2" className="text-lg">
+        <Heading level="h2" className="text-md text-ui-fg-subtle">
           Descubre nuestra selección de productos frescos y de calidad
         </Heading>
         {/* <div className="absolute bottom-0 left-40 zoom-in-75 -z-10 hidden lg:block">

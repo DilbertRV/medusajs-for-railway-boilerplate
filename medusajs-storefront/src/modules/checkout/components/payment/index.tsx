@@ -121,7 +121,7 @@ const Payment = ({
               onClick={handleEdit}
               className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
             >
-              Edit
+              Editar
             </button>
           </Text>
         )}

@@ -53,7 +53,6 @@ async function getCountryCode(
 ) {
   try {
     let countryCode
-
     const vercelCountryCode = request.headers
       .get("x-vercel-ip-country")
       ?.toLowerCase()

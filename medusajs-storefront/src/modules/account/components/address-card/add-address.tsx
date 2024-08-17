@@ -8,7 +8,6 @@ import { useFormState } from "react-dom"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
 import { addCustomerShippingAddress } from "@modules/account/actions"
-import CountrySelect from "@modules/checkout/components/country-select"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import Input from "@modules/common/components/input"
 import Modal from "@modules/common/components/modal"
@@ -52,7 +51,7 @@ const AddAddress = ({ region }: { region: Region }) => {
 
       <Modal isOpen={state} close={close}>
         <Modal.Title>
-          <Heading className="mb-2">Add address</Heading>
+          <Heading className="mb-2">Añadir dirección</Heading>
         </Modal.Title>
         <form action={formAction}>
           <Modal.Body>
@@ -95,25 +94,28 @@ const AddAddress = ({ region }: { region: Region }) => {
                   autoComplete="postal-code"
                 /> */}
                 <Input
+                  disabled
                   label="City"
                   name="city"
                   required
                   autoComplete="locality"
+                  value={"Liberia"}
                 />
               </div>
               <Input
+                disabled
                 label="Province / State"
                 name="province"
                 autoComplete="address-level1"
-                defaultValue={"Liberia"}
+                value={"Guanacaste"}
               />
-              <CountrySelect
+              {/* <CountrySelect
                 region={region}
                 name="country_code"
                 required
                 autoComplete="country"
-              />
-              <Input label="Phone" name="phone" autoComplete="phone" />
+              /> */}
+              <Input label="Teléfono" name="phone" autoComplete="phone" />
             </div>
             {formState.error && (
               <div className="text-rose-500 text-small-regular py-2">
@@ -129,7 +131,7 @@ const AddAddress = ({ region }: { region: Region }) => {
                 onClick={close}
                 className="h-10"
               >
-                Cancel
+                Cancelar
               </Button>
               <SubmitButton>Guardar</SubmitButton>
             </div>
